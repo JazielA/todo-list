@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //uso de propiedades en un componente
-export default function Todo({ todo, onUpdate }) {
+export default function Todo({ todo, onUpdate, onDelete }) {
   const [isEdit, setIsEdit] = useState(false);
 
   function FormEdit() {
@@ -41,7 +41,7 @@ export default function Todo({ todo, onUpdate }) {
     return (
       <div className="todoInfo">
         {todo.title} <button onClick={() => setIsEdit(true)}>Edit </button>
-        <button>Delete</button>
+        <button onClick={(e) => onDelete(todo.id)}>Delete</button>
       </div>
     );
   }
