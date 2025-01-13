@@ -2,6 +2,9 @@
 import { useState } from "react";
 import Todo from "./todo";
 
+//importo el fichero css para darle estilos a la aplicacion
+import "./todoApp.css";
+
 export default function TodoApp() {
   //manejo de estado
   const [title, setTitle] = useState(""); //inicialmente el titulo esta vacio
