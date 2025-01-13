@@ -7,11 +7,6 @@ export default function todoApp() {
   // estado para guardar la lista de tareas (todos)
   const [todos, setTodos] = useState([]); //inicialmente la lista de todos esta vacia
 
-  function handleClick(e) {
-    e.preventDefault();
-    setTitle("jaziel"); //cambiamos el titulo
-  }
-
   function handleChange(e) {
     const value = e.target.value; //accedemos al valor del input
 
@@ -26,6 +21,8 @@ export default function todoApp() {
       title: title,
       completed: false,
     };
+
+    setTodos([...todos, newTodo]);
   }
 
   return (
@@ -33,12 +30,22 @@ export default function todoApp() {
       <form className="todoCreateForm" onSubmit={handleSubmit}>
         <input onChange={handleChange} className="todoInput" value={title} />
         <input
-          onClick={handleClick}
+          onClick={handleSubmit}
           type="submit"
           value="Create todo"
           className="buttonCreate"
         />
       </form>
+
+      <div className="todosContainer">
+        {/* recorrer un arreglo de elementos con .map */}
+        {todos.map((todo) => (
+          <div key={todo.id} className="todoItem">
+            <input type="checkbox" />
+            <span>{todo.title}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
