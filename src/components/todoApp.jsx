@@ -26,6 +26,14 @@ export default function TodoApp() {
     setTodos([...todos, newTodo]);
   }
 
+  //funcion para actualizar el titulo de un todo
+  function handleUpdate(id, newValue) {
+    const temp = [...todos];
+    const todo = temp.find((todo) => todo.id === id);
+    todo.title = newValue;
+    setTodos(temp);
+  }
+
   return (
     <div className="todoContainer">
       <form className="todoCreateForm" onSubmit={handleSubmit}>
@@ -41,7 +49,7 @@ export default function TodoApp() {
       <div className="todosContainer">
         {/* recorrer un arreglo de elementos con .map */}
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} onUpdate={handleUpdate} />
         ))}
       </div>
     </div>
