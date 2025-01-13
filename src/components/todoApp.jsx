@@ -1,7 +1,8 @@
 //el uso de llaves {...} es para importar solo una parte de la libreria
 import { useState } from "react";
+import Todo from "./todo";
 
-export default function todoApp() {
+export default function TodoApp() {
   //manejo de estado
   const [title, setTitle] = useState("hola mundo"); //inicialmente el titulo esta vacio
   // estado para guardar la lista de tareas (todos)
@@ -40,10 +41,7 @@ export default function todoApp() {
       <div className="todosContainer">
         {/* recorrer un arreglo de elementos con .map */}
         {todos.map((todo) => (
-          <div key={todo.id} className="todoItem">
-            <input type="checkbox" />
-            <span>{todo.title}</span>
-          </div>
+          <Todo key={todo.id} todo={todo} />
         ))}
       </div>
     </div>
